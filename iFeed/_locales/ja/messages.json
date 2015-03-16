@@ -1,0 +1,48 @@
+﻿{
+    "appDescription": {
+        "message": "シンプルなRSSフィードリーダー",
+        "description": "シンプルなRSSフィードリーダー"
+    },
+    "errInvalidFeedURL": {
+        "message": "フィードのURLが正しくありません"
+    },
+    "errFeedUpdateFailed": {
+        "message": "フィード更新に失敗しました"
+    },
+    "errInvalidFeedFormat": {
+        "message": "フィードURLの書式が不正です"
+    },
+    "feedMenuRemove": {
+        "message": "フィードを削除する"
+    },
+    "html": {
+        "message": "ja"
+    },
+    "search_text": {
+        "message": "Google 検索"
+    },
+    "search_button": {
+        "message": "検 索"
+    },
+    "add_feed": {
+        "message": "フィードを追加する"
+    },
+    "reload_button": {
+        "message": "再読み込み"
+    },
+    "add_feed_window_title": {
+        "message": "フィードの追加"
+    },
+    "add_feed_text_form_group_error_label": {
+        "message": "フィードのURLが正しくありません"
+    },
+    "add_feed_window_body": {
+        "message": "フィードのURL"
+    },
+    "add_feed_window_cancel": {
+        "message": "キャンセル"
+    },
+    "add_feed_window_submit": {
+        "message": "追加"
+    }
+}

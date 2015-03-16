@@ -1,0 +1,48 @@
+﻿{
+    "appDescription": {
+        "message": "Simple RSS feed reader",
+        "description": "Simple RSS feed reader"
+    },
+    "errInvalidFeedURL": {
+        "message": "Invalid Feed URL"
+    },
+    "errFeedUpdateFailed": {
+        "message": "Feed update failed"
+    },
+    "errInvalidFeedFormat": {
+        "message": "Invalid feed URL format"
+    },
+    "feedMenuRemove": {
+        "message": "Remove feed"
+    },
+    "html": {
+        "message": "en"
+    },
+    "search_text": {
+        "message": "Google Search"
+    },
+    "search_button": {
+        "message": "Search"
+    },
+    "add_feed": {
+        "message": "Append Feed"
+    },
+    "reload_button": {
+        "message": "Reload"
+    },
+    "add_feed_window_title": {
+        "message": "Append Feed"
+    },
+    "add_feed_text_form_group_error_label": {
+        "message": "Invalid feed URL"
+    },
+    "add_feed_window_body": {
+        "message": "Feed URL"
+    },
+    "add_feed_window_cancel": {
+        "message": "Cancel"
+    },
+    "add_feed_window_submit": {
+        "message": "Append"
+    }
+}

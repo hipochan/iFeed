@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{2E328D39-5CBA-4E25-8067-6B617E6D2BE6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="assets\icon_128.png" />
+    <Content Include="assets\icon_16.png" />
+    <Content Include="assets\noimage.png" />
+    <Content Include="css\app.css" />
+    <Content Include="html\app.html" />
+    <Content Include="background\libs\js\jquery-2.1.1.min.js" />
+    <Content Include="libs\css\bootstrap.min.css" />
+    <Content Include="libs\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="libs\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="libs\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="libs\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="libs\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="libs\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="libs\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="libs\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="libs\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="libs\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="libs\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="libs\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="libs\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="libs\css\jquery-ui.min.css" />
+    <Content Include="libs\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="libs\js\bootstrap.min.js" />
+    <Content Include="libs\js\jquery-2.1.1.min.js" />
+    <Content Include="libs\js\jquery-ui.min.js" />
+    <Content Include="libs\js\jquery.mousewheel.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="manifest.json" />
+    <Content Include="libs\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="libs\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="libs\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_locales\ja\messages.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="background\js\dispatcher.ts" />
+    <TypeScriptCompile Include="background\js\main.ts" />
+    <TypeScriptCompile Include="background\js\models\config.ts" />
+    <TypeScriptCompile Include="background\js\models\feed.ts" />
+    <TypeScriptCompile Include="background\js\models\i18n.ts" />
+    <TypeScriptCompile Include="background\js\models\layout.ts" />
+    <TypeScriptCompile Include="background\js\models\messenger.ts" />
+    <TypeScriptCompile Include="background\js\models\storage.ts" />
+    <TypeScriptCompile Include="js\app.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_locales\en\messages.json" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>iHomeApp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52082</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52082/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

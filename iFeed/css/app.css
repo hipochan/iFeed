@@ -1,0 +1,97 @@
+html, body {
+	overflow: auto;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+    font-family: meiryo;
+    color: black;
+}
+#header {
+	background: #eee;
+    padding: 10px;
+}
+
+#content > div.feed > div > div > div.pull-left {
+    width: 100%;
+    line-height: 34px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#content > div.feed {
+    height: 410px;
+}
+
+#content > div.feed .list-group {
+    height: 333px;
+    overflow: auto;
+}
+#content > div.feed .feed-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 34px;
+    padding: 0;
+    cursor: move;
+    width: 100%;
+    margin-right: -45px;
+    float: right;
+}
+#content > div.feed .feed-icon {
+    width: 45px;
+    float: right;
+}
+#content > div.feed button .glyphicon {
+    font-size: 12px;
+    color: #888;
+}
+#content > div.feed .dropdown-menu.left {
+    left: auto;
+    right: 0;
+}
+#content > div.feed .dropdown-menu.left::before {
+    left: auto !important;
+    right: 9px;
+}
+#content > div.feed .dropdown-menu.left::after {
+    left: auto !important;
+    right: 10px;
+}
+#content > div.feed .feed_item {
+    width: 100%;
+    margin-right: -60px;
+}
+#content > div.feed .feed_item a {
+    margin-right: 60px;
+    display: block;
+}
+#content > div.feed .feed_datetime {
+    width: 60px;
+}
+#search-form {
+    margin-left: 20px;
+}
+
+
+/* bootstrap fix */
+.tooltip.top .tooltip-arrow {
+	border-top-color: #333;
+}
+.tooltip.left .tooltip-arrow {
+	border-left-color: #333;
+}
+.tooltip.right .tooltip-arrow {
+	border-right-color: #333;
+}
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: #333;
+}
+.tooltip-inner {
+	color: #333;
+	background-color: #ddd;
+	border: #333 1px solid;
+    text-align: left;
+    word-break: break-all;
+}
