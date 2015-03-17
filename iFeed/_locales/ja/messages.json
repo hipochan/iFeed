@@ -1,7 +1,7 @@
 ﻿{
     "appDescription": {
         "message": "シンプルなRSSフィードリーダー",
-        "description": "シンプルなRSSフィードリーダー"
+        "description": "シンプルで見やすさを重視したRSSリーダーです。"
     },
     "errInvalidFeedURL": {
         "message": "フィードのURLが正しくありません"
@@ -9,7 +9,7 @@
     "errFeedUpdateFailed": {
         "message": "フィード更新に失敗しました"
     },
-    "errInvalidFeedFormat": {
+    "errImvalidFeedFormat": {
         "message": "フィードURLの書式が不正です"
     },
     "feedMenuRemove": {

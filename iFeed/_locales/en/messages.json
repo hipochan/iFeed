@@ -1,7 +1,7 @@
 ﻿{
     "appDescription": {
         "message": "Simple RSS feed reader",
-        "description": "Simple RSS feed reader"
+        "description": "It is a RSS reader with an emphasis on visibility simple."
     },
     "errInvalidFeedURL": {
         "message": "Invalid Feed URL"
@@ -9,11 +9,11 @@
     "errFeedUpdateFailed": {
         "message": "Feed update failed"
     },
-    "errInvalidFeedFormat": {
-        "message": "Invalid feed URL format"
+    "errImvalidFeedFormat": {
+        "message": "Invalid Feed URL format"
     },
     "feedMenuRemove": {
-        "message": "Remove feed"
+        "message": "Remove Feed"
     },
     "html": {
         "message": "en"
@@ -34,7 +34,7 @@
         "message": "Append Feed"
     },
     "add_feed_text_form_group_error_label": {
-        "message": "Invalid feed URL"
+        "message": "Invalid Feed URL"
     },
     "add_feed_window_body": {
         "message": "Feed URL"
