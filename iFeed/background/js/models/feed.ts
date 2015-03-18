@@ -29,8 +29,6 @@
         };
 
         public load = (): void => {
-            var undefined;
-
             this.getData('feed', (result) => {
                 if (result.feed !== undefined) {
                     this.FeedData = result.feed;

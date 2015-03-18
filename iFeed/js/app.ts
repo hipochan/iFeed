@@ -1,4 +1,6 @@
 ﻿module iFeed.Frontend {
+    var undefined;
+
     export class App {
         private getMessage = (keyword: string): string => chrome.i18n.getMessage(keyword);
         private sendMessage = (command: string, detail?: any) => {
@@ -121,7 +123,7 @@
             var pattern: any = new RegExp('^(https?:\\/\\/)?' + // protocol
                 '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
                 '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+                '(\\:\\d+)?(\\/[;&a-z\\d%_.~+=-]*)*' + // port and path
                 '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
                 '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
 
@@ -170,6 +172,8 @@
             var link: string = feed.link;
             var item: any = feed.data;
             var feedHTML: string = '';
+
+            $('[data-toggle="tooltip"]').tooltip('destroy');
 
             feedHTML += '<div class="panel panel-default">\n';
             feedHTML += '	<div class="panel-heading clearfix">\n';

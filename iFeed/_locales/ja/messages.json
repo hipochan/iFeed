@@ -9,7 +9,7 @@
     "errFeedUpdateFailed": {
         "message": "フィード更新に失敗しました"
     },
-    "errImvalidFeedFormat": {
+    "errInvalidFeedFormat": {
         "message": "フィードURLの書式が不正です"
     },
     "feedMenuRemove": {

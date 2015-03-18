@@ -9,7 +9,7 @@
     "errFeedUpdateFailed": {
         "message": "Feed update failed"
     },
-    "errImvalidFeedFormat": {
+    "errInvalidFeedFormat": {
         "message": "Invalid Feed URL format"
     },
     "feedMenuRemove": {

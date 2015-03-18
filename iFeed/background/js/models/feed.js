@@ -19,8 +19,6 @@ var iFeed;
                     feeds: []
                 };
                 this.load = function () {
-                    var undefined;
-
                     _this.getData('feed', function (result) {
                         if (result.feed !== undefined) {
                             _this.FeedData = result.feed;
