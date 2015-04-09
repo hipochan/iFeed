@@ -233,15 +233,12 @@
                     });
 
                     $('[data-toggle="tooltip"]').tooltip({
+                        trigger: 'hover',
                         animated: 'fade',
                         container: 'body',
                         delay: {
                             'show': 500
                         }
-                    });
-
-                    $('[data-toggle="tooltip"] a').on('click', function () {
-                        $(this).parents('li').tooltip('hide');
                     });
                 };
                 this.feedSorted = function () {
