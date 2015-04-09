@@ -247,6 +247,10 @@
                     'show': 500
                 }
             });
+
+            $('[data-toggle="tooltip"] a').on('click', function () {
+                $(this).parents('li').tooltip('hide');
+            });
         }
 
         private feedSorted = (): void => {
