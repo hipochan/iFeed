@@ -1,4 +1,7 @@
-﻿module iFeed {
+﻿/// <reference path="main.ts"/>
+/// <reference path="models/messenger.ts"/>
+
+module iFeed {
     export class Dispatcher {
         public accept() {
             chrome.runtime.onMessage.addListener((message: any, sender: any, sendResponse: any) => {

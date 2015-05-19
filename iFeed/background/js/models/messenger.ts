@@ -1,4 +1,6 @@
-﻿module iFeed.Models {
+﻿/// <reference path="../main.ts"/>
+
+module iFeed.Models {
     export enum MessageDirection {
         backend = 0,
         frontend = 1

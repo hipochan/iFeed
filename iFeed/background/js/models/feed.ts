@@ -1,4 +1,8 @@
-﻿module iFeed.Models {
+﻿/// <reference path="storage.ts"/>
+/// <reference path="messenger.ts"/>
+/// <reference path="i18n.ts"/>
+
+module iFeed.Models {
     var undefined;
 
     export interface IFeeds {

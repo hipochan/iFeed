@@ -1,4 +1,8 @@
-﻿declare var chrome;
+﻿/// <reference path="models/config.ts"/>
+/// <reference path="models/layout.ts"/>
+/// <reference path="models/feed.ts"/>
+
+declare var chrome;
 declare var $;
 
 module iFeed {

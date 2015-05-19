@@ -1,4 +1,7 @@
-﻿module iFeed.Frontend {
+﻿declare var chrome;
+declare var $;
+
+module iFeed.Frontend {
     var undefined;
 
     export class App {

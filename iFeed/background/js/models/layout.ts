@@ -1,4 +1,7 @@
-﻿module iFeed.Models {
+﻿/// <reference path="storage.ts"/>
+/// <reference path="messenger.ts"/>
+
+module iFeed.Models {
     var undefined;
 
     export enum LayoutType {
