@@ -72,6 +72,6 @@ module iFeed {
         var dispatcher = new Dispatcher();
 
         dispatcher.accept();
-        messenger.sendRequest(Models.MessageDirection.backend, 'Initialize');
+        config.load();
     });
 }

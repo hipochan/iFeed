@@ -36,7 +36,7 @@ module iFeed.Models {
                         });
                     }
                 }
-                this.save(() => messenger.sendRequest(MessageDirection.backend, 'ConfigLoaded'));
+                this.save(() => layout.load());
             });
         }
 

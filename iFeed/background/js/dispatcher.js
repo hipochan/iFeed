@@ -1,4 +1,6 @@
-﻿var iFeed;
+/// <reference path="main.ts"/>
+/// <reference path="models/messenger.ts"/>
+var iFeed;
 (function (iFeed) {
     var Dispatcher = (function () {
         function Dispatcher() {
@@ -6,36 +8,24 @@
         Dispatcher.prototype.accept = function () {
             var _this = this;
             chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-                var messageType = 0 /* backend */;
-
+                var messageType = iFeed.Models.MessageDirection.backend;
                 if (message.command.split('-')[0] == 'frontend') {
-                    messageType = 1 /* frontend */;
+                    messageType = iFeed.Models.MessageDirection.frontend;
                     message.command = message.command.substr(9);
                     _this.frontendMessage(message);
-                } else if (message.command.split('-')[0] == 'backend') {
-                    messageType = 0 /* backend */;
+                }
+                else if (message.command.split('-')[0] == 'backend') {
+                    messageType = iFeed.Models.MessageDirection.backend;
                     message.command = message.command.substr(8);
                     _this.backendMessage(message);
-                } else {
+                }
+                else {
                     return;
                 }
             });
         };
-
         Dispatcher.prototype.backendMessage = function (message) {
             switch (message.command) {
-                case 'Initialize':
-                    iFeed.config.load();
-                    break;
-                case 'ConfigLoaded':
-                    iFeed.layout.load();
-                    break;
-                case 'LayoutLoaded':
-                    iFeed.feed.load();
-                    break;
-                case 'FeedLoaded':
-                    iFeed.mainWindow.load();
-                    break;
                 case 'FeedAdded':
                     iFeed.layout.addFeedContent(message.detail);
                     break;
@@ -44,11 +34,10 @@
                     break;
             }
         };
-
         Dispatcher.prototype.frontendMessage = function (message) {
             switch (message.command) {
                 case 'GetLayoutRequest':
-                    iFeed.messenger.sendResponse(1 /* frontend */, 'GetLayoutResponsse', true, '', iFeed.layout.LayoutData);
+                    iFeed.messenger.sendResponse(iFeed.Models.MessageDirection.frontend, 'GetLayoutResponsse', true, '', iFeed.layout.LayoutData);
                     break;
                 case 'AddFeedRequest':
                     iFeed.feed.addFeed(message.detail);

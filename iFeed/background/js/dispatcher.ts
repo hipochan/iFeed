@@ -26,18 +26,6 @@ module iFeed {
 
         private backendMessage(message: any) {
             switch (message.command) {
-                case 'Initialize':
-                    config.load();
-                    break;
-                case 'ConfigLoaded':
-                    layout.load();
-                    break;
-                case 'LayoutLoaded':
-                    feed.load();
-                    break;
-                case 'FeedLoaded':
-                    mainWindow.load();
-                    break;
                 case 'FeedAdded':
                     layout.addFeedContent(message.detail);
                     break;

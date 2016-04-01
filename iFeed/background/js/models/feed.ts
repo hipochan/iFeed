@@ -37,7 +37,7 @@ module iFeed.Models {
                 if (result.feed !== undefined) {
                     this.FeedData = result.feed;
                 }
-                this.save(() => messenger.sendRequest(MessageDirection.backend, 'FeedLoaded'));
+                this.save(() => mainWindow.load());
             });
         }
 

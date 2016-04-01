@@ -21,7 +21,7 @@ module iFeed.Models {
                 if (result.layout !== undefined) {
                     this.LayoutData = result.layout;
                 }
-                this.save(() => messenger.sendRequest(MessageDirection.backend, 'LayoutLoaded'));
+                this.save(() => feed.load());
             });
         }
 

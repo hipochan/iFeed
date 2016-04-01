@@ -1,19 +1,20 @@
-﻿var __extends = this.__extends || function (d, b) {
+/// <reference path="storage.ts"/>
+/// <reference path="messenger.ts"/>
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var iFeed;
 (function (iFeed) {
+    var Models;
     (function (Models) {
         var undefined;
-
         var Config = (function (_super) {
             __extends(Config, _super);
             function Config() {
-                _super.apply(this, arguments);
                 var _this = this;
+                _super.apply(this, arguments);
                 this.ConfigData = {
                     AppWindow: {
                         left: 0,
@@ -31,7 +32,6 @@ var iFeed;
                         var screenHeight = screen.availHeight;
                         _this.ConfigData.AppWindow.left = (screenWidth - _this.ConfigData.AppWindow.width) / 2;
                         _this.ConfigData.AppWindow.top = (screenHeight - _this.ConfigData.AppWindow.height) / 2;
-
                         if (result !== undefined && result.config !== undefined) {
                             if (result.config.AppWindow !== undefined) {
                                 $.each(result.config.AppWindow, function (propertyName, value) {
@@ -44,25 +44,19 @@ var iFeed;
                                 });
                             }
                         }
-                        _this.save(function () {
-                            return iFeed.messenger.sendRequest(0 /* backend */, 'ConfigLoaded');
-                        });
+                        _this.save(function () { return iFeed.layout.load(); });
                     });
                 };
                 this.save = function (callback) {
                     if (typeof callback !== 'function')
-                        callback = function () {
-                        };
-
+                        callback = function () { };
                     var storage = new Models.Storage();
-
                     storage.setData({ config: _this.ConfigData }, callback);
                 };
             }
             return Config;
         })(Models.Storage);
         Models.Config = Config;
-    })(iFeed.Models || (iFeed.Models = {}));
-    var Models = iFeed.Models;
+    })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));
 //# sourceMappingURL=config.js.map

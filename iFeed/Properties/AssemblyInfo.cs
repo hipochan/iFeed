@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("iHomeApp.Properties")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Toshiba")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("iHomeApp.Properties")]
-[assembly: AssemblyCopyright("Copyright © Toshiba 2015")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -83,9 +83,13 @@ module iFeed.Frontend {
             this.sendMessage('GetLayoutRequest');
         }
 
-        private escapeHTML = (value: string): string => {
+        private escapeHTMLString = (value: string): string => {
             value = value.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
-            value = $('<div />').text(value).html();
+            return $('<div />').text(value).html();
+        }
+
+        private escapeHTML = (value: string): string => {
+            value = this.escapeHTMLString(value);
             var len: number = value.length;
             if (len > 200) {
                 value = value.substr(0, 200) + '...';
@@ -106,7 +110,7 @@ module iFeed.Frontend {
                 return (pubDate.getMonth() + 1) + '/' + pubDate.getDate() + ' ' + ('0' + pubDate.getHours()).slice(-2) + ':' + ('0' + pubDate.getMinutes()).slice(-2);
             }
             else {
-                return pubDate.getFullYear() + '/' + (pubDate.getMonth() + 1) + '/' + pubDate.getDate();
+                return pubDate.getFullYear().toString().slice(2) + '/' + (pubDate.getMonth() + 1) + '/' + pubDate.getDate();
             }
         }
 
@@ -191,7 +195,7 @@ module iFeed.Frontend {
             feedHTML += '		    </div>\n';
             feedHTML += '		</div>\n';
             if (link !== undefined && link != '') {
-                feedHTML += '		<div class="feed-title"><a href="' + this.escapeHTML(link).replace(/\"/g, '\\"') + '" target="_blank">' + this.escapeHTML(title) + '</a></div>\n';
+                feedHTML += '		<div class="feed-title"><a href="' + this.escapeHTMLString(link).replace(/\"/g, '\\"') + '" target="_blank">' + this.escapeHTML(title) + '</a></div>\n';
             }
             else {
                 feedHTML += '		<div class="feed-title">' + this.escapeHTML(title) + '</div>\n';
@@ -224,7 +228,7 @@ module iFeed.Frontend {
                     item.date = '-';
                 }
 
-                var link: string = self.escapeHTML(item.link).replace(/\"/g, '\\"');
+                var link: string = self.escapeHTMLString(item.link).replace(/\"/g, '\\"');
 
                 if (item.description !== '') {
                     var description: string = self.escapeHTML(item.description).replace(/\"/g, '\\"');

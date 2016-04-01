@@ -1,5 +1,7 @@
-﻿var iFeed;
+/// <reference path="../main.ts"/>
+var iFeed;
 (function (iFeed) {
+    var Models;
     (function (Models) {
         (function (MessageDirection) {
             MessageDirection[MessageDirection["backend"] = 0] = "backend";
@@ -10,9 +12,10 @@
             function Messenger() {
                 var _this = this;
                 this.send = function (data) {
-                    if (data.direction == 0 /* backend */) {
+                    if (data.direction == MessageDirection.backend) {
                         data.command = 'backend-' + data.command;
-                    } else {
+                    }
+                    else {
                         data.command = 'frontend-' + data.command;
                     }
                     chrome.runtime.sendMessage(data);
@@ -27,7 +30,6 @@
             return Messenger;
         })();
         Models.Messenger = Messenger;
-    })(iFeed.Models || (iFeed.Models = {}));
-    var Models = iFeed.Models;
+    })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));
 //# sourceMappingURL=messenger.js.map
