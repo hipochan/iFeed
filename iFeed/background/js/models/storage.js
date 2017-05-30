@@ -28,7 +28,7 @@ var iFeed;
                 };
             }
             return Storage;
-        })();
+        }());
         Models.Storage = Storage;
     })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));

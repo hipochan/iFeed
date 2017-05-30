@@ -1,4 +1,4 @@
-﻿/// <reference path="storage.ts"/>
+/// <reference path="storage.ts"/>
 /// <reference path="messenger.ts"/>
 
 module iFeed.Models {

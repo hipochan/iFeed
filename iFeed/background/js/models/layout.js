@@ -66,7 +66,7 @@ var iFeed;
                 };
             }
             return Layout;
-        })(Models.Storage);
+        }(Models.Storage));
         Models.Layout = Layout;
     })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));

@@ -1,4 +1,4 @@
-﻿/// <reference path="../main.ts"/>
+/// <reference path="../main.ts"/>
 
 module iFeed.Models {
     export enum MessageDirection {

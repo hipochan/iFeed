@@ -55,7 +55,7 @@ var iFeed;
                 };
             }
             return Config;
-        })(Models.Storage);
+        }(Models.Storage));
         Models.Config = Config;
     })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));

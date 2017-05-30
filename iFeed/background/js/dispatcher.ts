@@ -1,4 +1,4 @@
-﻿/// <reference path="main.ts"/>
+/// <reference path="main.ts"/>
 /// <reference path="models/messenger.ts"/>
 
 module iFeed {
@@ -25,14 +25,14 @@ module iFeed {
         }
 
         private backendMessage(message: any) {
-            switch (message.command) {
-                case 'FeedAdded':
-                    layout.addFeedContent(message.detail);
-                    break;
-                case 'FeedRemoved':
-                    layout.removeFeedContent(message.detail);
-                    break;
-            }
+//            switch (message.command) {
+//                case 'FeedAdded':
+//                    layout.addFeedContent(message.detail);
+//                    break;
+//                case 'FeedRemoved':
+//                    layout.removeFeedContent(message.detail);
+//                    break;
+//            }
         }
 
         private frontendMessage(message: any) {

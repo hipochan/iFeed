@@ -143,7 +143,7 @@ var iFeed;
                                 data: feedItems
                             });
                             iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'AddFeedResponse', true);
-                            _this.save(function () { return iFeed.messenger.sendRequest(Models.MessageDirection.backend, 'FeedAdded', feedId); });
+                            _this.save(function () { return iFeed.layout.addFeedContent(feedId); });
                         },
                         error: function (data) {
                             iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
@@ -153,7 +153,7 @@ var iFeed;
                 this.removeFeed = function (feedId) {
                     var index = _this.getFeedIndex(feedId);
                     _this.FeedData.feeds.splice(index, 1);
-                    _this.save(function () { return iFeed.messenger.sendRequest(Models.MessageDirection.backend, 'FeedRemoved', feedId); });
+                    _this.save(function () { return iFeed.layout.removeFeedContent(feedId); });
                 };
                 this.getFeedIndex = function (feedId) {
                     for (var i = 0; i < _this.FeedData.feeds.length; i++) {
@@ -208,7 +208,7 @@ var iFeed;
                 };
             }
             return Feed;
-        })(Models.Storage);
+        }(Models.Storage));
         Models.Feed = Feed;
     })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));

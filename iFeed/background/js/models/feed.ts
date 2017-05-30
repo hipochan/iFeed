@@ -1,4 +1,4 @@
-﻿/// <reference path="storage.ts"/>
+/// <reference path="storage.ts"/>
 /// <reference path="messenger.ts"/>
 /// <reference path="i18n.ts"/>
 
@@ -177,7 +177,8 @@ module iFeed.Models {
                     );
 
                     messenger.sendResponse(MessageDirection.frontend, 'AddFeedResponse', true);
-                    this.save(() => messenger.sendRequest(MessageDirection.backend, 'FeedAdded', feedId));
+                    this.save(() => layout.addFeedContent(feedId));
+
                 },
                 error: (data: any) => {
                     messenger.sendResponse(MessageDirection.frontend, 'AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
@@ -190,7 +191,7 @@ module iFeed.Models {
 
             this.FeedData.feeds.splice(index, 1);
 
-            this.save(() => messenger.sendRequest(MessageDirection.backend, 'FeedRemoved', feedId));
+            this.save(() => layout.removeFeedContent(feedId));
         }
         
         private getFeedIndex = (feedId: number): number => {

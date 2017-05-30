@@ -5,7 +5,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
-    font-family: meiryo;
+    font-family: Verdana, Arial, sans-serif !important;
     color: black;
 }
 a {
@@ -64,14 +64,14 @@ a {
 }
 #content > div.feed .feed_item {
     width: 100%;
-    margin-right: -60px;
+    margin-right: -65px;
 }
 #content > div.feed .feed_item a {
-    margin-right: 60px;
+    margin-right: 65px;
     display: block;
 }
 #content > div.feed .feed_datetime {
-    width: 60px;
+    width: 65px;
 }
 #search-form {
     margin-left: 20px;

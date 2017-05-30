@@ -25,14 +25,14 @@ var iFeed;
             });
         };
         Dispatcher.prototype.backendMessage = function (message) {
-            switch (message.command) {
-                case 'FeedAdded':
-                    iFeed.layout.addFeedContent(message.detail);
-                    break;
-                case 'FeedRemoved':
-                    iFeed.layout.removeFeedContent(message.detail);
-                    break;
-            }
+            //            switch (message.command) {
+            //                case 'FeedAdded':
+            //                    layout.addFeedContent(message.detail);
+            //                    break;
+            //                case 'FeedRemoved':
+            //                    layout.removeFeedContent(message.detail);
+            //                    break;
+            //            }
         };
         Dispatcher.prototype.frontendMessage = function (message) {
             switch (message.command) {
@@ -57,7 +57,7 @@ var iFeed;
             }
         };
         return Dispatcher;
-    })();
+    }());
     iFeed.Dispatcher = Dispatcher;
 })(iFeed || (iFeed = {}));
 //# sourceMappingURL=dispatcher.js.map

@@ -55,7 +55,7 @@ var iFeed;
             };
         }
         return MainWindow;
-    })();
+    }());
     iFeed.MainWindow = MainWindow;
     iFeed.messenger = new iFeed.Models.Messenger();
     iFeed.config = new iFeed.Models.Config();

@@ -232,7 +232,7 @@ var iFeed;
                 };
             }
             return App;
-        })();
+        }());
         Frontend.App = App;
     })(Frontend = iFeed.Frontend || (iFeed.Frontend = {}));
 })(iFeed || (iFeed = {}));

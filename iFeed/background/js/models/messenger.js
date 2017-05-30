@@ -28,7 +28,7 @@ var iFeed;
                 };
             }
             return Messenger;
-        })();
+        }());
         Models.Messenger = Messenger;
     })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));

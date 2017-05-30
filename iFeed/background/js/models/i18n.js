@@ -7,7 +7,7 @@ var iFeed;
             }
             I18n.getMessage = function (keyword) { return chrome.i18n.getMessage(keyword); };
             return I18n;
-        })();
+        }());
         Models.I18n = I18n;
     })(Models = iFeed.Models || (iFeed.Models = {}));
 })(iFeed || (iFeed = {}));
