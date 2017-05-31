@@ -7,7 +7,6 @@ module iFeed.Frontend {
     export class App {
         private getMessage = (keyword: string): string => chrome.i18n.getMessage(keyword);
         private sendMessage = (command: string, detail?: any) => {
-            command = 'frontend-' + command;
             chrome.runtime.sendMessage({ command: command, detail: detail });
         }
 
@@ -15,9 +14,6 @@ module iFeed.Frontend {
             chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 var command: string = message.command;
 
-                if (command.split('-')[0] != 'frontend') return;
-
-                command = command.substr(9);
                 switch (command) {
                     case 'AddFeedResponse':
                         this.addFeedResponse(message);

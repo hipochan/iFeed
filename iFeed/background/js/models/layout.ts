@@ -47,14 +47,14 @@ module iFeed.Models {
                 itemType: 0,
                 feedId: feedId
             });
-            this.save((): void => messenger.sendResponse(MessageDirection.frontend, 'GetLayoutResponsse', true, '', layout.LayoutData));
+            this.save((): void => messenger.sendResponse('GetLayoutResponsse', true, '', layout.LayoutData));
         }
 
         public removeFeedContent = (feedId: number): void => {
             var index: number = this.getLayoutIndexFromFeedId(feedId);
             if (index != null) {
                 this.LayoutData.splice(index, 1);
-                this.save((): void => messenger.sendResponse(MessageDirection.frontend, 'GetLayoutResponsse', true, '', layout.LayoutData));
+                this.save((): void => messenger.sendResponse('GetLayoutResponsse', true, '', layout.LayoutData));
             }
         }
 
@@ -65,7 +65,7 @@ module iFeed.Models {
                 newLayout.push($.extend(true, {}, this.LayoutData[this.getLayoutIndexFromFeedId(feedIds[i])]));
             }
             this.LayoutData = newLayout;
-            this.save((): void => messenger.sendResponse(MessageDirection.frontend, 'GetLayoutResponsse', true, '', layout.LayoutData));
+            this.save((): void => messenger.sendResponse('GetLayoutResponsse', true, '', layout.LayoutData));
         }
     }
 }

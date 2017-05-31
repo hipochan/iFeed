@@ -47,13 +47,13 @@ var iFeed;
                         itemType: 0,
                         feedId: feedId
                     });
-                    _this.save(function () { return iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'GetLayoutResponsse', true, '', iFeed.layout.LayoutData); });
+                    _this.save(function () { return iFeed.messenger.sendResponse('GetLayoutResponsse', true, '', iFeed.layout.LayoutData); });
                 };
                 this.removeFeedContent = function (feedId) {
                     var index = _this.getLayoutIndexFromFeedId(feedId);
                     if (index != null) {
                         _this.LayoutData.splice(index, 1);
-                        _this.save(function () { return iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'GetLayoutResponsse', true, '', iFeed.layout.LayoutData); });
+                        _this.save(function () { return iFeed.messenger.sendResponse('GetLayoutResponsse', true, '', iFeed.layout.LayoutData); });
                     }
                 };
                 this.sortFeed = function (feedIds) {
@@ -62,7 +62,7 @@ var iFeed;
                         newLayout.push($.extend(true, {}, _this.LayoutData[_this.getLayoutIndexFromFeedId(feedIds[i])]));
                     }
                     _this.LayoutData = newLayout;
-                    _this.save(function () { return iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'GetLayoutResponsse', true, '', iFeed.layout.LayoutData); });
+                    _this.save(function () { return iFeed.messenger.sendResponse('GetLayoutResponsse', true, '', iFeed.layout.LayoutData); });
                 };
             }
             return Layout;

@@ -8,15 +8,11 @@ var iFeed;
                 var _this = this;
                 this.getMessage = function (keyword) { return chrome.i18n.getMessage(keyword); };
                 this.sendMessage = function (command, detail) {
-                    command = 'frontend-' + command;
                     chrome.runtime.sendMessage({ command: command, detail: detail });
                 };
                 this.initialize = function () {
                     chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                         var command = message.command;
-                        if (command.split('-')[0] != 'frontend')
-                            return;
-                        command = command.substr(9);
                         switch (command) {
                             case 'AddFeedResponse':
                                 _this.addFeedResponse(message);

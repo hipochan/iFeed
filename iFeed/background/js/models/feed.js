@@ -24,6 +24,36 @@ var iFeed;
                     _this.getData('feed', function (result) {
                         if (result.feed !== undefined) {
                             _this.FeedData = result.feed;
+                            // データ不整合修正(枠ありデータなし)
+                            var layoutFixed = false;
+                            for (var i = iFeed.layout.LayoutData.length - 1; i >= 0; i--) {
+                                var found = false;
+                                for (var j = 0; j < _this.FeedData.feeds.length; j++) {
+                                    if (iFeed.layout.LayoutData[i].feedId == _this.FeedData.feeds[j].feedId) {
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                                if (!found) {
+                                    iFeed.layout.LayoutData.splice(i, 1);
+                                    layoutFixed = true;
+                                }
+                            }
+                            if (layoutFixed)
+                                iFeed.layout.save();
+                            // データ不整合修正(データあり枠なし)
+                            for (var i = _this.FeedData.feeds.length - 1; i >= 0; i--) {
+                                var found = false;
+                                for (var j = 0; j < iFeed.layout.LayoutData.length; j++) {
+                                    if (_this.FeedData.feeds[i].feedId == iFeed.layout.LayoutData[j].feedId) {
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                                if (!found) {
+                                    _this.FeedData.feeds.splice(i, 1);
+                                }
+                            }
                         }
                         _this.save(function () { return iFeed.mainWindow.load(); });
                     });
@@ -123,12 +153,12 @@ var iFeed;
                         url: url,
                         success: function (data) {
                             if (!_this.isFeedData(data)) {
-                                iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
+                                iFeed.messenger.sendResponse('AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
                                 return false;
                             }
                             var title = _this.getFeedTitle(data);
                             if (title == "") {
-                                iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
+                                iFeed.messenger.sendResponse('AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
                                 return false;
                             }
                             var link = _this.getFeedLink(data);
@@ -142,11 +172,11 @@ var iFeed;
                                 lastUpdate: new Date().toDateString(),
                                 data: feedItems
                             });
-                            iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'AddFeedResponse', true);
+                            iFeed.messenger.sendResponse('AddFeedResponse', true);
                             _this.save(function () { return iFeed.layout.addFeedContent(feedId); });
                         },
                         error: function (data) {
-                            iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
+                            iFeed.messenger.sendResponse('AddFeedResponse', false, Models.I18n.getMessage('errInvalidFeedURL'));
                         }
                     });
                 };
@@ -179,12 +209,12 @@ var iFeed;
                         success: function (data) {
                             var feed = _this.FeedData.feeds[index];
                             if (!_this.isFeedData(data)) {
-                                iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'UpdateFeedResponse', false, Models.I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
+                                iFeed.messenger.sendResponse('UpdateFeedResponse', false, Models.I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
                                 return false;
                             }
                             var title = _this.getFeedTitle(data);
                             if (title == "") {
-                                iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'UpdateFeedResponse', false, Models.I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
+                                iFeed.messenger.sendResponse('UpdateFeedResponse', false, Models.I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
                                 return false;
                             }
                             feed.title = title;
@@ -196,7 +226,7 @@ var iFeed;
                             _this.save(function () { return _this.getFeedData(feedId); });
                         },
                         error: function (data) {
-                            iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'UpdateFeedResponse', false, Models.I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
+                            iFeed.messenger.sendResponse('UpdateFeedResponse', false, Models.I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
                         }
                     });
                 };
@@ -204,7 +234,7 @@ var iFeed;
                     var index = _this.getFeedIndex(feedId);
                     if (index === null)
                         return;
-                    iFeed.messenger.sendResponse(Models.MessageDirection.frontend, 'GetFeedResponse', true, '', _this.FeedData.feeds[index]);
+                    iFeed.messenger.sendResponse('GetFeedResponse', true, '', _this.FeedData.feeds[index]);
                 };
             }
             return Feed;

@@ -36,6 +36,37 @@ module iFeed.Models {
             this.getData('feed', (result) => {
                 if (result.feed !== undefined) {
                     this.FeedData = result.feed;
+
+                    // データ不整合修正(枠ありデータなし)
+                    let layoutFixed: boolean = false;
+                    for (let i = iFeed.layout.LayoutData.length - 1; i >= 0; i--) {
+                        let found: boolean = false;
+                        for (let j = 0; j < this.FeedData.feeds.length; j++) {
+                            if (iFeed.layout.LayoutData[i].feedId == this.FeedData.feeds[j].feedId) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            iFeed.layout.LayoutData.splice(i, 1);
+                            layoutFixed = true;
+                        }
+                    }
+                    if (layoutFixed) iFeed.layout.save();
+
+                    // データ不整合修正(データあり枠なし)
+                    for (let i = this.FeedData.feeds.length - 1; i >= 0 ; i--) {
+                        let found: boolean = false;
+                        for (let j = 0; j < iFeed.layout.LayoutData.length; j++) {
+                            if (this.FeedData.feeds[i].feedId == iFeed.layout.LayoutData[j].feedId) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            this.FeedData.feeds.splice(i, 1);
+                        }
+                    }
                 }
                 this.save(() => mainWindow.load());
             });
@@ -151,13 +182,13 @@ module iFeed.Models {
                 url: url,
                 success: (data): any => {
                     if (!this.isFeedData(data)) {
-                        messenger.sendResponse(MessageDirection.frontend, 'AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
+                        messenger.sendResponse('AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
                         return false;
                     }
 
                     var title: string = this.getFeedTitle(data);
                     if (title == "") {
-                        messenger.sendResponse(MessageDirection.frontend, 'AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
+                        messenger.sendResponse('AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
                         return false;
                     }
 
@@ -176,12 +207,12 @@ module iFeed.Models {
                         }
                     );
 
-                    messenger.sendResponse(MessageDirection.frontend, 'AddFeedResponse', true);
+                    messenger.sendResponse('AddFeedResponse', true);
                     this.save(() => layout.addFeedContent(feedId));
 
                 },
                 error: (data: any) => {
-                    messenger.sendResponse(MessageDirection.frontend, 'AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
+                    messenger.sendResponse('AddFeedResponse', false, I18n.getMessage('errInvalidFeedURL'));
                 }
             });
         }
@@ -222,14 +253,14 @@ module iFeed.Models {
                     var feed: IFeed = this.FeedData.feeds[index];
 
                     if (!this.isFeedData(data)) {
-                        messenger.sendResponse(MessageDirection.frontend, 'UpdateFeedResponse', false, I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
+                        messenger.sendResponse('UpdateFeedResponse', false, I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
                         return false;
                     }
 
                     var title: string = this.getFeedTitle(data);
 
                     if (title == "") {
-                        messenger.sendResponse(MessageDirection.frontend, 'UpdateFeedResponse', false, I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
+                        messenger.sendResponse('UpdateFeedResponse', false, I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
                         return false;
                     }
                     feed.title = title;
@@ -245,7 +276,7 @@ module iFeed.Models {
                     this.save((): void => this.getFeedData(feedId));
                 },
                 error: (data: any) => {
-                    messenger.sendResponse(MessageDirection.frontend, 'UpdateFeedResponse', false, I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
+                    messenger.sendResponse('UpdateFeedResponse', false, I18n.getMessage('errFeedUpdateFailed') + ' [feed.title]');
                 }
             });
         }
@@ -254,7 +285,7 @@ module iFeed.Models {
             var index: number = this.getFeedIndex(feedId);
             if (index === null) return;
 
-            messenger.sendResponse(MessageDirection.frontend, 'GetFeedResponse', true, '', this.FeedData.feeds[index]);
+            messenger.sendResponse('GetFeedResponse', true, '', this.FeedData.feeds[index]);
         }
     }
 }
